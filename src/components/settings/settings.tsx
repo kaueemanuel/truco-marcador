@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-import { Container, ModalView, ModalContainer, TouchableOpacity, TitleView, ItemBox, OptionBox, TextInput } from './settings.styles';
+import { Container, ModalView, ModalContainer, TouchableOpacity, TitleView, ItemBox, OptionBox, ChangeMaxPontuationButton } from './settings.styles';
 import { Modal, Switch } from 'react-native';
 import { useSettings } from '../../context/settings';
 import themes from '../../style/theme';
+import { Ionicons } from '@expo/vector-icons';
 import { Title, Text } from '../../style/global.styles';
 
 interface SettingsProps {
@@ -29,11 +30,12 @@ const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }: SettingsProps) =
     }
   };
 
-  const handleMaxPontuation = (value: string) => {
-    if (value.includes(',') || value.includes('.')) return;
-    if (value === '') return setMaxPontuation('0');
-    if (!isNumber(Number(value))) return setMaxPontuation('15');
-    setMaxPontuation(+value + '');
+  const handleMaxPontuation = (sum: boolean) => {
+    if (sum) {
+      return setMaxPontuation((value) => `${Number(value) + 1}`);
+    }
+    if (Number(maxPontuation) === 1) return;
+    setMaxPontuation((value) => `${Number(value) - 1}`);
   }
 
   useEffect(() => {
@@ -68,7 +70,13 @@ const Settings: React.FC<SettingsProps> = ({ isOpen, onClose }: SettingsProps) =
           <ItemBox>
             <Text fontSize="26px">pontuação máxima</Text>
             <OptionBox>
-              <TextInput value={maxPontuation} onChangeText={handleMaxPontuation} keyboardType="numeric" />
+              <ChangeMaxPontuationButton onPress={() => handleMaxPontuation(false)}>
+                <Ionicons name="chevron-back-outline" size={30} color={theme.color.title} />
+              </ChangeMaxPontuationButton>
+              <Text fontSize="26px">{maxPontuation}</Text>
+              <ChangeMaxPontuationButton onPress={() => handleMaxPontuation(true)}>
+                <Ionicons name="chevron-forward-outline" size={30} color={theme.color.title} />
+              </ChangeMaxPontuationButton>
             </OptionBox>
           </ItemBox>
           <ItemBox style={{ marginBottom: 0 }}>

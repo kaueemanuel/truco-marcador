@@ -16,7 +16,7 @@ export const ItemBox = styled.View`
 export const OptionBox = styled.View`
   width: 100%;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin-top: 10px;
 `;
@@ -49,10 +49,8 @@ export const TouchableOpacity = styled.TouchableOpacity`
   elevation: 3;
 `;
 
-export const TextInput = styled.TextInput`
-  color: ${({ theme }) => theme.color.title};
-  font-family: ${({ theme }) => theme.fonts.YanoneKaffeesatz_400Regular};
-  font-size: 32px;
-  text-align: center;
-  width: 100%;
+export const ChangeMaxPontuationButton = styled.TouchableOpacity`
+  padding: 10px;
+  margin: 0 20px;
+  border-radius: 6px;
 `;
