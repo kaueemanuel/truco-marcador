@@ -1,5 +1,5 @@
 import React, { ReactChildren } from 'react';
-import { TextComponent, ViewComponent } from 'react-native';
+import { TextComponent, Platform } from 'react-native';
 
 import styled from 'styled-components/native';
 
@@ -19,6 +19,8 @@ export const Title = ({ children, fontSize, fontWeight, textAlign, fontFamily, a
     font-weight: ${fontWeight || '600'};
     font-size: ${fontSize || '32px'};
     font-family: ${({ theme }) => !fontFamily ? theme.fonts.YanoneKaffeesatz_600SemiBold : fontFamily};
+    margin-bottom: ${Platform.OS === "android" ? '-12px' : '0px'};
+    margin-top: ${Platform.OS === "android" ? '-12px' : '0px'};
   `
   return <Component<typeof TextComponent>>{children}</Component>
 }
@@ -30,6 +32,8 @@ export const Text = ({ children, fontSize, fontWeight, textAlign, fontFamily, ac
     font-weight: ${fontWeight || '400'};
     font-size: ${fontSize || '18px'};
     font-family: ${({ theme }) => !fontFamily ? theme.fonts.YanoneKaffeesatz_400Regular : fontFamily};
+    margin-bottom: ${Platform.OS === "android" ? '-12px' : '0px'};
+    margin-top: ${Platform.OS === "android" ? '-12px' : '0px'};
   `
   return <Component<typeof TextComponent>>{children}</Component>
 }

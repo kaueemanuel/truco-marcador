@@ -69,7 +69,6 @@ export const ButtonSetPoints = styled.TouchableOpacity`
   background: ${({ theme }) => theme.color.secondary};
   border-radius: 12px;
   border: 2px solid ${({ theme }) => theme.color.secondary};
-  elevation: 10;
   `;
 
 export const TextSetPoints = styled.Text`
@@ -91,7 +90,6 @@ export const ButtonResetPoints = styled.TouchableOpacity`
   background: ${({ theme }) => theme.color.secondary};
   border-radius: 12px;
   border: 2px solid ${({ theme }) => theme.color.secondary};
-  elevation: 10;
 `;
 
 

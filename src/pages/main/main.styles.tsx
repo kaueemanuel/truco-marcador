@@ -1,7 +1,9 @@
 import styled from 'styled-components/native';
+import { Platform, StatusBar } from 'react-native';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
+  padding-top: ${Platform.OS === "android" ? `${StatusBar.currentHeight ? StatusBar.currentHeight + 10 : 24}px` : '0px'};
   background-color: ${({ theme }) => theme.color.background};
 `;
 export const ScrollView = styled.ScrollView`
@@ -24,5 +26,4 @@ export const Title = styled.Text`
 export const SettingsButton = styled.TouchableOpacity`
   position: absolute;
   right: 20px;
-
 `;
